@@ -47,12 +47,12 @@
 			let plot_RT = new Plot({name:"温度誤差", canvas: "CANVAS_A", x_start: -1, x_end:1, roop:1000});
 			let plot_OT = new Plot({name:"温度差", canvas: "CANVAS_B", x_start: -1, x_end:1, roop:1000});
 			let plot_C = new Plot({name:"出力", canvas: "CANVAS_C", x_start: -1, x_end:1, roop:1000});
-			plot_A.plot(RT_LeftSholder, "blue"});
-			plot_A.plot(RT_Triangle, "yellow");
-			plot_A.plot(RT_RightSholder, "red");
-			plot_B.plot(OT_LeftSholder, "blue"});
-			plot_B.plot(OT_Triangle, "yellow");
-			plot_B.plot(OT_RightSholder, "red");
+			plot_RT.plot(RT_LeftSholder, "blue"});
+			plot_RT.plot(RT_Triangle, "yellow");
+			plot_RT.plot(RT_RightSholder, "red");
+			plot_OT.plot(OT_LeftSholder, "blue"});
+			plot_OT.plot(OT_Triangle, "yellow");
+			plot_OT.plot(OT_RightSholder, "red");
 // 			plot_C.plot(LeftSholder);
 // 			plot_C.plot(Triangle);
 // 			plot_C.plot(Trapezoid);
