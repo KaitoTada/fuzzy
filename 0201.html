@@ -45,8 +45,8 @@
 			let OT_RightSholder = new Fuzzy(0, 1);
 			let OT_Triangle = Fuzzy.Triangle(-1, 0, 1);
 			let plot_RT = new Plot({name:"温度誤差", canvas: "CANVAS_A", x_start: -1, x_end:1, roop:1000});
-			let plot_OT = new Plot({name:"左肩", canvas: "CANVAS_B", x_start: -1, x_end:1, roop:1000});
-			let plot_C = new Plot({name:"三角形", canvas: "CANVAS_C", x_start: -1, x_end:1, roop:1000});
+			let plot_OT = new Plot({name:"温度差", canvas: "CANVAS_B", x_start: -1, x_end:1, roop:1000});
+			let plot_C = new Plot({name:"出力", canvas: "CANVAS_C", x_start: -1, x_end:1, roop:1000});
 			plot_A.plot(RT_LeftSholder, "blue"});
 			plot_A.plot(RT_Triangle, "yellow");
 			plot_A.plot(RT_RightSholder, "red");
