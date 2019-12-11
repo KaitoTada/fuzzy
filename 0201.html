@@ -2,21 +2,28 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>ファジィ推論とその応用1</title>
+		<title>ファジィ推論とその応用2</title>
 		<script type="text/javascript" src="./0101.js"></script>
 		<script type="text/javascript" src="./plot.js"></script>
 	</head>
 	<body>
-		<h1>第1回実習課題</h1>
-		<h3>プログラム課題1</h3>
+		<h1>第2回実習課題</h1>
+		<h3>実習課題1</h3>
 		<p>
-			<canvas id="CANVAS_A" width="300" height="200"></canvas>
-			<canvas id="CANVAS_B" width="300" height="200"></canvas>
-			<canvas id="CANVAS_C" width="300" height="200"></canvas>
-			<canvas id="CANVAS_D" width="300" height="200"></canvas>
+			IF-THEN規則
+			if ( 現在室温 < 目標温度 ) and ( 現在気温 < 外気温 ) then y is -1
+			if ( 現在室温 < 目標温度 ) and ( 現在気温 = 外気温 ) then y is -1
+			if ( 現在室温 < 目標温度 ) and ( 現在気温 > 外気温 ) then y is -1
+			if ( 現在室温 = 目標温度 ) and ( 現在気温 < 外気温 ) then y is -1
+			if ( 現在室温 = 目標温度 ) and ( 現在気温 = 外気温 ) then y is -1
+			if ( 現在室温 = 目標温度 ) and ( 現在気温 > 外気温 ) then y is -1
+			if ( 現在室温 > 目標温度 ) and ( 現在気温 < 外気温 ) then y is -1
+			if ( 現在室温 > 目標温度 ) and ( 現在気温 = 外気温 ) then y is -1
+			if ( 現在室温 > 目標温度 ) and ( 現在気温 > 外気温 ) then y is -1
 		</p>
 		<script type="text/javascript">
 		window.addEventListener('load', function(){
+			let goal = 
 			let RightSholder = new Fuzzy(normalize(0, 40, 20), normalize(0, 40, 30));
 			let LeftSholder = new Fuzzy(normalize(0,40, 20), normalize(0, 40, 15), true);
 			let Triangle = Fuzzy.Triangle(normalize(0,40,10), normalize(0,40,20), normalize(0,40,30));
