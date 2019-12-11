@@ -30,21 +30,32 @@
 			<br>
 			if ( 現在室温 > 目標温度 ) and ( 現在気温 > 外気温 ) then y is そのまま
 		</p>
+		<p>
+			<canvas id="CANVAS_A" width="600" height="400"></canvas>
+			<canvas id="CANVAS_B" width="600" height="400"></canvas>
+			<canvas id="CANVAS_C" width="600" height="400"></canvas>
+		</p>
 		<script type="text/javascript">
 		window.addEventListener('load', function(){
-			let goal = 
-			let RightSholder = new Fuzzy(normalize(0, 40, 20), normalize(0, 40, 30));
-			let LeftSholder = new Fuzzy(normalize(0,40, 20), normalize(0, 40, 15), true);
-			let Triangle = Fuzzy.Triangle(normalize(0,40,10), normalize(0,40,20), normalize(0,40,30));
-			let Trapezoid = Fuzzy.Trapezoid(normalize(0,40,10), normalize(0,40,15), normalize(0,40,25), normalize(0,40,30));
-			let plot_A = new Plot({name:"右肩", canvas: "CANVAS_A", x_start: -1, x_end:1, roop:1000});
-			let plot_B = new Plot({name:"左肩", canvas: "CANVAS_B", x_start: -1, x_end:1, roop:1000});
+			let goal = 25;
+			let RT_LeftSholder = new Fuzzy(-1, 0, true);
+			let RT_Triangle = Fuzzy.Triangle(-1, 0, 1);
+			let RT_RightSholder = new Fuzzy(0, 1);
+			let OT_LeftSholder = new Fuzzy(-1, 0, true);
+			let OT_RightSholder = new Fuzzy(0, 1);
+			let OT_Triangle = Fuzzy.Triangle(-1, 0, 1);
+			let plot_RT = new Plot({name:"温度誤差", canvas: "CANVAS_A", x_start: -1, x_end:1, roop:1000});
+			let plot_OT = new Plot({name:"左肩", canvas: "CANVAS_B", x_start: -1, x_end:1, roop:1000});
 			let plot_C = new Plot({name:"三角形", canvas: "CANVAS_C", x_start: -1, x_end:1, roop:1000});
-			let plot_D = new Plot({name:"台形", canvas: "CANVAS_D", x_start: -1, x_end:1, roop:1000});
-			plot_A.plot(RightSholder);
-			plot_B.plot(LeftSholder);
-			plot_C.plot(Triangle);
-			plot_D.plot(Trapezoid);
+			plot_A.plot(RT_LeftSholder, "blue"});
+			plot_A.plot(RT_Triangle, "yellow");
+			plot_A.plot(RT_RightSholder, "red");
+			plot_B.plot(OT_LeftSholder, "blue"});
+			plot_B.plot(OT_Triangle, "yellow");
+			plot_B.plot(OT_RightSholder, "red");
+// 			plot_C.plot(LeftSholder);
+// 			plot_C.plot(Triangle);
+// 			plot_C.plot(Trapezoid);
 		});
 		</script>
 
