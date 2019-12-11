@@ -53,13 +53,10 @@
 			plot_OT.plot(OT_LeftSholder, "steelblue");
 			plot_OT.plot(OT_Triangle, "greenyellow");
 			plot_OT.plot(OT_RightSholder, "tomato");
-// 			plot_C.plot(LeftSholder);
-// 			plot_C.plot(Triangle);
-// 			plot_C.plot(Trapezoid);
 		});
 		</script>
 
-		<h3>プログラミング課題2</h3>
+		<h3>実習課題2</h3>
 		<p>
 			input
 			<br>
@@ -69,7 +66,6 @@
 			<br>
 			<textarea name="output" id="output" rows="6" cols="50"></textarea>
 		</p>
-		<h3>プログラム課題3</h3>
 		<p>
 			<canvas id="CANVAS" width="600" height="400"></canvas>
 		</p>
@@ -90,7 +86,7 @@
 				Fuzzy.Triangle(grade[3][2], grade[3][3], grade[3][4]),
 				new Fuzzy(grade[4][2], grade[4][3])
 			];
-			let plot = new Plot({name:"三角型メンバシップ関数", canvas: "CANVAS", x_start: min, x_end: max, roop:1000, scale_interval:5});
+			let plot = new Plot({name:"出力", canvas: "CANVAS"});
 			for (let i = 0; i < fuzzy.length; i++) {
 				plot.plot(fuzzy[i], grade[i][1]);
 			}
