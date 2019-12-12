@@ -41,8 +41,8 @@
 			let RT_Triangle = Fuzzy.Triangle(-1, 0, 1);
 			let RT_RightSholder = new Fuzzy(0, 1);
 			let OT_LeftSholder = new Fuzzy(-1, 0, true);
-			let OT_RightSholder = new Fuzzy(0, 1);
 			let OT_Triangle = Fuzzy.Triangle(-1, 0, 1);
+			let OT_RightSholder = new Fuzzy(0, 1);
 			let plot_RT = new Plot({name:"温度誤差", canvas: "CANVAS_A", x_start: -1, x_end:1, roop:1000});
 			let plot_OT = new Plot({name:"温度差", canvas: "CANVAS_B", x_start: -1, x_end:1, roop:1000});
 			let plot_C = new Plot({name:"出力", canvas: "CANVAS_C", x_start: -1, x_end:1, roop:1000});
@@ -70,7 +70,7 @@
 		</p>
 		<script type="text/javascript">
 		window.addEventListener('load', function(){
-			let min = 10, max = 40;
+			let min = -1, max = 1;
 			let grade = [
 										["寒い", "blue", 15, 20],
 										["やや寒い", "cyan", 15, 20, 25],
@@ -78,13 +78,13 @@
 										["やや暑い", "yellow", 25, 30, 35],
 										["暑い", "orangered", 30, 35]
 			];
-			let fuzzy = [
-				new Fuzzy(grade[0][2], grade[0][3], true),
-				Fuzzy.Triangle(grade[1][2], grade[1][3], grade[1][4]),
-				Fuzzy.Triangle(grade[2][2], grade[2][3], grade[2][4]),
-				Fuzzy.Triangle(grade[3][2], grade[3][3], grade[3][4]),
-				new Fuzzy(grade[4][2], grade[4][3])
-			];
+			let RT = [new Fuzzy(-1, 0, true), Fuzzy.Triangle(-1, 0, 1), new Fuzzy(0, 1)];
+			let OT = [new Fuzzy(-1, 0, true), Fuzzy.Triangle(-1, 0, 1), new Fuzzy(0, 1)];
+			let y = [
+				[0, 1, 1],
+				[-1, 0, 1],
+				[-1, -1, 0],
+				];
 			let plot = new Plot({name:"出力", canvas: "CANVAS"});
 			for (let i = 0; i < fuzzy.length; i++) {
 				plot.plot(fuzzy[i], grade[i][1]);
@@ -95,8 +95,9 @@
 			let result = function () {
 				let input = inputArea.value;
 				let results = "";
-				for (let i = 0; i < fuzzy.length; i++) {
-					results += grade[i][0] + ":" + fuzzy[i].getT(input) + "\n";
+				for (let i = 0; i < RT.length; i++) {
+					for (let j = 0; j < OT.length; j++) {
+						results += RT[i].getT(input) * OT[j].getT(input);
 				}
 				outputArea.value = results;
 			}
