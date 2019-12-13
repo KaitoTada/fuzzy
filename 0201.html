@@ -98,7 +98,7 @@
 					for (let j = 0; j < OT.length; j++) {
 						numerator += RT[i].getT(room_temperature) * OT[j].getT(outside_temperature) * y[i][j];
 						denominator += RT[i].getT(room_temperature) * OT[j].getT(outside_temperature);
-						console.log("numerator:", numerator, "denominator:", denominator)_
+						console.log("numerator:", numerator, "denominator:", denominator);
 					}
 				}
 				let result = numerator / denominator;
