@@ -58,7 +58,8 @@
 		<p>
 			input
 			<br>
-			<input type="text" name="input" id="input" placeholder="数字を入力して下さい。">
+			現在室温:<input type="text" name="room_temperature" id="room_temperature" placeholder="数字を入力して下さい。">
+			外気温:<input type="text" name="outside_temperature" id="outside_temperature" placeholder="数字を入力して下さい。">
 			<br>
 			output
 			<br>
@@ -69,6 +70,7 @@
 		</p>
 		<script type="text/javascript">
 		window.addEventListener('load', function(){
+			let goal = 25;
 			let min = -1, max = 1;
 			let RT = [new Fuzzy(-1, 0, true), Fuzzy.Triangle(-1, 0, 1), new Fuzzy(0, 1)];
 			let OT = [new Fuzzy(-1, 0, true), Fuzzy.Triangle(-1, 0, 1), new Fuzzy(0, 1)];
@@ -83,16 +85,20 @@
 // 				plot.plot(fuzzy[i], grade[i][1]);
 // 			}
 			// output fyzzy results
-			let inputArea = document.getElementById("input");
+			let room = document.getElementById("room_temperature");
+			let outside = document.getElementById("outside_temperature");
 			let outputArea = document.getElementById("output");
 			let result = function () {
-				let input = inputArea.value;
+				let room_temperature = room.value;
+				let outside_temperature = outside.value;
 				let numerator = 0;
 				let denominator = 0;
+				
 				for (let i = 0; i < RT.length; i++) {
 					for (let j = 0; j < OT.length; j++) {
-						numerator += RT[i].getT(input) * OT[j].getT(input) * y[i][j];
-						denominator += RT[i].getT(input) * OT[j].getT(input);
+						numerator += RT[i].getT(room_temperature) * OT[j].getT(outside_temperature) * y[i][j];
+						denominator += RT[i].getT(room_temperature) * OT[j].getT(outside_temperature);
+						console.log("numerator:", numerator, "denominator:", denominator)_
 					}
 				}
 				let result = numerator / denominator;
