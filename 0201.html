@@ -62,6 +62,7 @@
 			<br>
 			外気温:<input type="text" name="outside_temperature" id="outside_temperature" placeholder="数字を入力して下さい。">
 			<br>
+			<input type="button" name="submit" id="submit" value="計算">
 			output
 			<br>
 			<textarea name="output" id="output" rows="6" cols="50"></textarea>
@@ -88,6 +89,7 @@
 			// output fyzzy results
 			let room = document.getElementById("room_temperature");
 			let outside = document.getElementById("outside_temperature");
+			let submit = document.getElementById("submit");
 			let outputArea = document.getElementById("output");
 			let result = function () {
 				let room_temperature = normalize(min, max, goal_temperature - room.value);
@@ -105,8 +107,7 @@
 				let result = numerator / denominator;
 				outputArea.value = result;
 			}
-			room.addEventListener("change", result);
-			outside.addEventListener("change", result);
+			submit.addEventListener("click", result);
 		});
 		</script>
 	</body>
