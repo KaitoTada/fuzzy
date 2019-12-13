@@ -12,23 +12,23 @@
 		<p>
 			IF-THEN規則
 			<br>
-			if ( 現在室温 < 目標温度 ) and ( 現在気温 < 外気温 ) then y is そのまま
+			if ( 現在室温 > 目標温度 ) and ( 外気温 > 現在室温 ) then y is 冷やす
 			<br>
-			if ( 現在室温 < 目標温度 ) and ( 現在気温 = 外気温 ) then y is 温める
+			if ( 現在室温 > 目標温度 ) and ( 外気温 = 現在室温 ) then y is 冷やす
 			<br>
-			if ( 現在室温 < 目標温度 ) and ( 現在気温 > 外気温 ) then y is 温める
+			if ( 現在室温 > 目標温度 ) and ( 外気温 < 現在室温 ) then y is そのまま
 			<br>
-			if ( 現在室温 = 目標温度 ) and ( 現在気温 < 外気温 ) then y is 冷やす
+			if ( 現在室温 = 目標温度 ) and ( 外気温 > 現在室温 ) then y is 冷やす
 			<br>
-			if ( 現在室温 = 目標温度 ) and ( 現在気温 = 外気温 ) then y is そのまま
+			if ( 現在室温 = 目標温度 ) and ( 外気温 = 現在室温 ) then y is そのまま
 			<br>
-			if ( 現在室温 = 目標温度 ) and ( 現在気温 > 外気温 ) then y is 温める
+			if ( 現在室温 = 目標温度 ) and ( 外気温 < 現在室温 ) then y is 温める
 			<br>
-			if ( 現在室温 > 目標温度 ) and ( 現在気温 < 外気温 ) then y is 冷やす
+			if ( 現在室温 < 目標温度 ) and ( 外気温 > 現在室温 ) then y is そのまま
 			<br>
-			if ( 現在室温 > 目標温度 ) and ( 現在気温 = 外気温 ) then y is 冷やす
+			if ( 現在室温 < 目標温度 ) and ( 外気温 = 現在室温 ) then y is 温める
 			<br>
-			if ( 現在室温 > 目標温度 ) and ( 現在気温 > 外気温 ) then y is そのまま
+			if ( 現在室温 < 目標温度 ) and ( 外気温 < 現在室温 ) then y is 温める
 		</p>
 		<p>
 			<canvas id="CANVAS_A" width="400" height="300"></canvas>
@@ -70,8 +70,8 @@
 		</p>
 		<script type="text/javascript">
 		window.addEventListener('load', function(){
-			let goal = 25;
-			let min = -1, max = 1;
+			let goal_temperature = 25;
+			let min = -15, max = 15;
 			let RT = [new Fuzzy(-1, 0, true), Fuzzy.Triangle(-1, 0, 1), new Fuzzy(0, 1)];
 			let OT = [new Fuzzy(-1, 0, true), Fuzzy.Triangle(-1, 0, 1), new Fuzzy(0, 1)];
 			let y = [
@@ -89,8 +89,8 @@
 			let outside = document.getElementById("outside_temperature");
 			let outputArea = document.getElementById("output");
 			let result = function () {
-				let room_temperature = room.value;
-				let outside_temperature = outside.value;
+				let room_temperature = normalize(min, max, goal_temperature - room.value);
+				let outside_temperature = normalize(min, max, room_temperature - outside.value);
 				let numerator = 0;
 				let denominator = 0;
 				
