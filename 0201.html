@@ -95,11 +95,10 @@
 			let result = function () {
 // 				let room_temperature = normalize(min, max, goal_temperature - room.value);
 // 				let outside_temperature = normalize(min, max, room_temperature - outside.value);
-				let room_remperature = room.value;
-				let outside_remperature = outside.value;
+				let room_temperature = room.value;
+				let outside_temperature = outside.value;
 				let numerator = 0;
 				let denominator = 0;
-				
 				for (let i = 0; i < RT.length; i++) {
 					for (let j = 0; j < OT.length; j++) {
 						numerator += RT[i].getT(room_temperature) * OT[j].getT(outside_temperature) * y[i][j];
