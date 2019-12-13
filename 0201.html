@@ -70,13 +70,6 @@
 		<script type="text/javascript">
 		window.addEventListener('load', function(){
 			let min = -1, max = 1;
-			let grade = [
-										["寒い", "blue", 15, 20],
-										["やや寒い", "cyan", 15, 20, 25],
-										["適温", "lime", 20, 25, 30],
-										["やや暑い", "yellow", 25, 30, 35],
-										["暑い", "orangered", 30, 35]
-			];
 			let RT = [new Fuzzy(-1, 0, true), Fuzzy.Triangle(-1, 0, 1), new Fuzzy(0, 1)];
 			let OT = [new Fuzzy(-1, 0, true), Fuzzy.Triangle(-1, 0, 1), new Fuzzy(0, 1)];
 			let y = [
@@ -85,6 +78,7 @@
 				[-1, -1, 0],
 				];
 			let plot = new Plot({name:"出力", canvas: "CANVAS"});
+			
 			for (let i = 0; i < fuzzy.length; i++) {
 				plot.plot(fuzzy[i], grade[i][1]);
 			}
@@ -93,12 +87,16 @@
 			let outputArea = document.getElementById("output");
 			let result = function () {
 				let input = inputArea.value;
-				let results = "";
+				let numerator = 0;
+				let denominator = 0;
 				for (let i = 0; i < RT.length; i++) {
 					for (let j = 0; j < OT.length; j++) {
-						results += RT[i].getT(input) * OT[j].getT(input);
+						numerator += RT[i].getT(input) * OT[j].getT(input) * y[i][j];
+						denominator += RT[i].getT(input) * OT[j].getT(input);
+					}
 				}
-				outputArea.value = results;
+				let result = numerator / denominator;
+				outputArea.value = result;
 			}
 			inputArea.addEventListener("change", result);
 		});
