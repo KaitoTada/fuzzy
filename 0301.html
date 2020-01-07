@@ -1,4 +1,52 @@
-<!doctype HTML>
-<HTML>
-<head>
-  <title>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/fuzzy/favicon-16x16.png">
+		<title>ファジィ推論とその応用3</title>
+		<script type="text/javascript" src="./fuzzy.js"></script>
+		<script type="text/javascript" src="./plot.js"></script>
+	</head>
+	<body>
+		<h1>第3回実習課題</h1>
+		<h3>実習課題1</h3>
+    <p>
+			<canvas id="CANVAS_1" width="400" height="300"></canvas>
+		</p>
+    <script>
+      class InvertedPendulum {
+        constructor(x, theta, noisy){
+          this.actions = [0, 1, 2];
+          this.M = 8;
+          this.m = 2;
+          this.l = 0.5;
+          this.g = 9.8;
+          this.t = 0.1;
+          this.t_num = 1000;
+          
+          this.x = x;
+          this.x_dot = 0;
+          this.theta = theta;
+          this.theta_dot = 0;
+          this.u = 0;
+          this.noisy = noisy;
+          this.t_one = this.t / this.t_num;
+          
+        }
+        
+        function do_action(a){
+          
+        
+    </script>
+    
+		<h3>実習課題2</h3>
+		<p>
+      text
+		</p>
+    
+		<h3>実習課題3</h3>
+		<p>
+			<canvas id="CANVAS_2" width="400" height="300"></canvas>
+		</p>
+	</body>
+</html>
