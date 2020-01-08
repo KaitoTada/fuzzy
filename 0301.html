@@ -81,6 +81,11 @@
 			}
 		}
 		
+		plot(){
+			// test
+		}
+		
+		
 		let plant = new InvertedPendulum(0, Math.PI/12, false);
 		let angle_history = [Math.PI/12];
 		let x_history = [0];
@@ -90,15 +95,15 @@
 			angle_history.push(next_s[0])
 			x_history.push(plant.get_car_x());
 		}
-			
+		console.log("angle", angle_hsitory);
+		console.lgo("x", x_history);
 		// video(x_history, angle_history, plant.l, plant.t);
-    </script>
-    
+		</script>
 		<h3>実習課題2</h3>
 		<p>
-      text
+			text
 		</p>
-    
+		
 		<h3>実習課題3</h3>
 		<p>
 			<canvas id="CANVAS_2" width="400" height="300"></canvas>
