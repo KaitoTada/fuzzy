@@ -48,7 +48,7 @@
 					}
 					
 					this.update_state();
-					return { (this.theta, this.theta_dot), this.calc_reward()};
+					return { [this.theta, this.theta_dot], this.calc_reward()};
 				}
 				
 				updata_state(){
