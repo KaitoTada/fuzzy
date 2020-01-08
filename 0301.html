@@ -50,7 +50,7 @@
 				return { next_x: [this.theta, this.theta_dot], rewaord: this.calc_reward()};
 			}
 				
-			updata_state(){
+			update_state(){
 				for(let i; i < this.t_num; i++){
 					let sintheta = Math.sin(this.theta);
 					let costheta = Math.cos(this.theta);
