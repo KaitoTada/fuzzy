@@ -85,7 +85,7 @@
 		angle_history = [Math.PI/12];
 		x_history = [0];
 		for(let i=0; i<200; i++){
-			let {next_s];, reward} = plant.do_action(2);
+			let {next_s, reward} = plant.do_action(2);
 			console.log(next_s, next_s[0]*180/Math.PI, plant.get_car_x());
 			angle_history.push(next_s[0])
 			x_history.push(plant.get_car_x());
